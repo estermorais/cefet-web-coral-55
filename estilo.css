@@ -1,122 +1,166 @@
 /* EXERCÍCIO 1: fontes */
-/* importá-las aqui... e definir as `font-family` da turminha... */
+@import "fonts/ravie.css";
+@import "fonts/verdana.css";
 
+/* EXERCÍCIO 10: custom properties */
+:root {
+  --cor-fundo-body: #fff;
+  --cor-destaque: #d027aa;
+  --cor-gradiente-inicio: #f6f1b2;
+  --cor-gradiente-fim: #4599b2;
+  --cor-borda-recipiente: #d3d3d3;
+  --cor-fundo-cardapio: rgba(255, 255, 255, 0.2);
+  --cor-borda-cardapio: #aac0ae;
+  --cor-texto: #333;
+  --cor-titulo: #e90c0c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-fundo-body: #111;
+    --cor-destaque: #e570d0;
+    --cor-gradiente-inicio: #1a1a2e;
+    --cor-gradiente-fim: #0a3040;
+    --cor-borda-recipiente: #444;
+    --cor-fundo-cardapio: rgba(0, 0, 0, 0.3);
+    --cor-borda-cardapio: #446055;
+    --cor-texto: #eee;
+    --cor-titulo: #ff6666;
+  }
+}
+
+/* EXERCÍCIO 2: layout da página */
+html, body, #recipiente {
+  min-height: 100vh;
+}
 
 body {
-  background-color: #fff;
+  background-color: var(--cor-fundo-body);
+  margin: 0;
+  font-family: "Verdana", verdana, sans-serif;
 }
 
 strong {
-  color: #d027aa;
+  color: var(--cor-destaque);
 }
 
 #recipiente {
-  background-image: linear-gradient(to bottom, #f6f1b2, #4599b2 80%);
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
-}
-
-#cardapio {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-top: 1px solid #aac0ae;
-  border-bottom: 1px solid #aac0ae;
-  border-left: 1px solid #aac0ae;
-}
-
-#cardapio h3 {
-  font-size: 18px;
-  color: #333;
-  margin-top: 30px;
-}
-
-#cardapio article {
-  font-size: 14px;
-  color: #333;
-}
-
-
-/* EXERCÍCIO 2: layout da página */
-#recipiente {
-  /* layout da página aqui */
-  /* ... */
-  /* ... */
-  /* ... */
-  /* ... */
+  width: 600px;
+  margin: 0 auto;
+  background-image: linear-gradient(to bottom, var(--cor-gradiente-inicio), var(--cor-gradiente-fim) 80%);
+  border-left: 1px solid var(--cor-borda-recipiente);
+  border-right: 1px solid var(--cor-borda-recipiente);
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "lateral cabecalho"
+    "lateral cardapio"
+    "rodape  rodape";
 }
 
 #cabecalho-pagina {
-
+  grid-area: cabecalho;
 }
 
 #lateral {
-
+  grid-area: lateral;
 }
 
 #cardapio {
-
+  grid-area: cardapio;
 }
 
 #rodape-pagina {
-
+  grid-area: rodape;
 }
-
 
 
 /* EXERCÍCIO 3: cabeçalho da página */
 #cabecalho-pagina {
-
+  padding: 20px;
 }
 
 #cabecalho-pagina h1 {
   margin: 0;
   font-size: 36px;
-  color: #e90c0c;
+  color: var(--cor-titulo);
   font-weight: normal;
+  font-family: "Ravie", fantasy;
+  text-align: center;
 }
 
 #cabecalho-pagina h2 {
   margin: 0;
   font-size: 24px;
-  color: #333;
+  color: var(--cor-texto);
   font-weight: normal;
+  text-align: right;
 }
 
+
 /* EXERCÍCIO 4: cada item do menu */
-article {
+#cardapio {
+  background-color: var(--cor-fundo-cardapio);
+  border-top: 1px solid var(--cor-borda-cardapio);
+  border-bottom: 1px solid var(--cor-borda-cardapio);
+  border-left: 1px solid var(--cor-borda-cardapio);
+  padding: 0 15px;
+}
+
+#cardapio h3 {
+  font-size: 18px;
+  color: var(--cor-texto);
+  margin-top: 30px;
+}
+
+#cardapio article {
+  font-size: 14px;
+  color: var(--cor-texto);
+  display: flex;
+  justify-content: space-between;
+  line-height: 2;
 }
 
 
 /* EXERCÍCIO 5: o rodapé */
 #rodape-pagina {
+  display: flex;
+  justify-content: flex-end;
+  padding: 48px 15px 26px;
 }
+
 
 /* EXERCÍCIO 6: lateral */
 #lateral {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
 /* EXERCÍCIO 7: o ticket */
 #ticket {
+  position: fixed;
+  left: -89px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 300ms ease-out;
 }
 
 #ticket:hover {
+  left: 0;
 }
 
 
 /* EXERCÍCIO 8: deslocamento no siri e peixe */
 #siri {
+  position: relative;
+  left: -10px;
+  top: 17px;
 }
 
 #peixe {
+  position: relative;
+  left: -44px;
 }
-
-/* EXERCÍCIO 9: bolhas - no HTML e no JS */
-/* --- */
-
-
-/* EXERCÍCIO 10: modo escuro */
-/* no início deste arquivo (depois dos @import), coloque
-   as custom properties */
-/* coloque aqui a media query para sobrescrever o valor
-   das custom properties para o modo escuro */
-
