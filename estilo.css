@@ -23,7 +23,7 @@
     --cor-gradiente-fim: #0a3040;
     --cor-borda-recipiente: #444;
     --cor-fundo-cardapio: rgba(0, 0, 0, 0.3);
-    --cor-borda-cardapio: #446055;
+    --cor-borda-cardapio: #554b7f;
     --cor-texto: #eee;
     --cor-titulo: #ff6666;
   }
@@ -32,6 +32,7 @@
 /* EXERCÍCIO 2: layout da página */
 html, body, #recipiente {
   min-height: 100vh;
+  
 }
 
 body {
@@ -57,22 +58,27 @@ strong {
     "lateral cabecalho"
     "lateral cardapio"
     "rodape  rodape";
+
 }
 
 #cabecalho-pagina {
-  grid-area: cabecalho;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 #lateral {
-  grid-area: lateral;
+  grid-column: 1;
+  grid-row: 1 / 3;
 }
 
 #cardapio {
-  grid-area: cardapio;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 #rodape-pagina {
-  grid-area: rodape;
+  grid-column: 1 / 3;
+  grid-row: 3;
 }
 
 
@@ -86,7 +92,7 @@ strong {
   font-size: 36px;
   color: var(--cor-titulo);
   font-weight: normal;
-  font-family: "Ravie", fantasy;
+  font-family: "Ravie", cursive;
   text-align: center;
 }
 
@@ -127,7 +133,7 @@ strong {
 #rodape-pagina {
   display: flex;
   justify-content: flex-end;
-  padding: 48px 15px 26px;
+  padding: 46px 15px 25px;
 }
 
 
